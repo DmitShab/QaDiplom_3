@@ -10,6 +10,7 @@ import java.util.concurrent.TimeUnit;
 
 public class BaseUITest {
     WebDriver driver;
+
     public final String url = "https://stellarburgers.nomoreparties.site/";
     public final String urlLogin = "https://stellarburgers.nomoreparties.site/login";
 

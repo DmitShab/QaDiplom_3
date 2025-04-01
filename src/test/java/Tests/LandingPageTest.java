@@ -1,81 +1,83 @@
 package Tests;
 
-import PageObject.AccountPage;
 import PageObject.LandingPage;
 import PageObject.LogInPage;
-import PageObject.SingUpPage;
+import org.junit.After;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.jupiter.api.DisplayName;
-import org.openqa.selenium.By;
 
-public class LandingPageTests extends BaseUITest {
+import testDateApiUser.ApiUser;
+import testDateApiUser.PostRequestSignUPPOJO;
+
+public class LandingPageTest extends BaseUITest {
 
     LogInPage logInPage;
     LandingPage constructorPage;
-    String name;
-    String email;
-    String password;
-    SingUpPage singUpPage;
-    AccountPage accountPage;
+    ApiUser apiUser = new ApiUser();
+    PostRequestSignUPPOJO postRequestSignUPPOJO;
 
     //Создание тестовой сущности (Пользователь)
     @Before
     public void setUp() {
-        name = TestData.generateRandomName();
-        email = TestData.generateRandomEmail();
-        password = TestData.generateRandomPassword(10);
-
-        singUpPage = new SingUpPage(driver);
-        driver.get(urlLogin);
-        singUpPage.singUp(name, email, password);
+        postRequestSignUPPOJO = new PostRequestSignUPPOJO(TestData.generateRandomName(), TestData.generateRandomEmail(), TestData.generateRandomPassword(10));
+        apiUser.signUp(postRequestSignUPPOJO);
 
         //Авторизация
         driver.get(url);
 
         logInPage = new LogInPage(driver);
         logInPage.clickLandingLogInButton();
-        logInPage.logIn(email, password);
+        logInPage.logIn(postRequestSignUPPOJO.getEmail(), postRequestSignUPPOJO.getPassword());
 
         //Переход в Личный кабинет
         logInPage.clickAccountButton();
     }
+    //Удаление тестовой сущности
+    @After
+    public void clear() {
+        apiUser.deleteUser();
+    }
 
     @Test
     @DisplayName("Переход из 'Личный кабинет' на лендинг через кнопку 'Конструктор'")
-    public void goToLandingPage() {
+    public void goToLandingPageTest() {
         constructorPage = new LandingPage(driver);
         constructorPage.clickConstructorButton();
         Assert.assertEquals(true, logInPage.makeOrderButton());
     }
+
     @Test
     @DisplayName("Переход из 'Личный кабинет' на лендинг через логотип 'StellarBurgers'")
-    public void goToLandingPage1() {
+    public void goToLandingPage1Test() {
         constructorPage = new LandingPage(driver);
         constructorPage.clickStellarBurgers();
         Assert.assertEquals(true, logInPage.makeOrderButton());
     }
+
     @Test
     @DisplayName("переход в раздел соусы")
-    public void goToSouces(){
+    public void goToSoucesTest() {
         constructorPage = new LandingPage(driver);
         constructorPage.clickConstructorButton();
         constructorPage.clickSouces();
         Assert.assertTrue(constructorPage.findSouceElement());
     }
+
     @Test
     @DisplayName("переход в раздел булки")
-    public void goToBuns(){
+    public void goToBunsTest() {
         constructorPage = new LandingPage(driver);
         constructorPage.clickConstructorButton();
         constructorPage.clickSouces();
         constructorPage.clickIngredients();
         Assert.assertTrue(constructorPage.findBunsElement());
     }
+
     @Test
     @DisplayName("переход в раздел начинки")
-    public void goToIngredients(){
+    public void goToIngredientsTest() {
         constructorPage = new LandingPage(driver);
         constructorPage.clickConstructorButton();
         constructorPage.clickIngredients();
