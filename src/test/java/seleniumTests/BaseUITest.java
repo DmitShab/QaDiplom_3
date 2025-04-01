@@ -4,7 +4,7 @@ import org.junit.After;
 import org.junit.Before;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
-//import com.yandex.webdriver.YandexDriver;
+import org.openqa.selenium.chrome.ChromeOptions;
 
 import java.util.concurrent.TimeUnit;
 
@@ -16,7 +16,7 @@ public class BaseUITest {
 
     @Before
     public void createDriver() {
-        initChrome();
+        initYandex();
         driver.manage().timeouts().implicitlyWait(3, TimeUnit.SECONDS);
     }
 
@@ -28,8 +28,12 @@ public class BaseUITest {
     public void tearDown() {
         driver.quit();
     }
-//    public void initYandex(){
-//        System.setProperty("webdriver.yandex.driver", "yandexdriver.exe");
-//        driver = new YandexDriver();
-    }
 
+    public void initYandex() {
+        System.setProperty("webdriver.yandex.driver", "yandexdriver.exe");
+        ChromeOptions options = new ChromeOptions();
+        options.setBinary("C:/Users/Dmitry/AppData/Local/Yandex/YandexBrowser/Application/browser.exe");
+//        options.setBinary(System.getProperty("C:/Users/Dmitry/WebDriver/bin/yandexdriver.exe"));
+        driver = new ChromeDriver(options);
+    }
+}
