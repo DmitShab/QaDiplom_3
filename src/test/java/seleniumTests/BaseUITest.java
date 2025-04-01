@@ -16,7 +16,7 @@ public class BaseUITest {
 
     @Before
     public void createDriver() {
-        initYandex();
+        initChrome();
         driver.manage().timeouts().implicitlyWait(3, TimeUnit.SECONDS);
     }
 
@@ -37,3 +37,16 @@ public class BaseUITest {
         driver = new ChromeDriver(options);
     }
 }
+
+//Yandex driver
+//* Путь до бинарника скачанного с https://github.com/yandex/YandexDriver/releases  */
+//        System.setProperty("webdriver.chrome.driver", "yandexdriver.exe");
+//ChromeOptions options = new ChromeOptions();
+//* Путь до яндекс браузера. Такой путь не сможет запустить никто кроме вас */
+//options.setBinary("C:\\Users\\Dmitry\\AppData\\Local\\Yandex\\YandexBrowser\\Application\\browser.exe");
+//* Поэтому лучше передавать путь через переменную maven
+// * mvn clean test -DyandexDriverPath=путь до драйвера
+// * mvn clean test -DyandexDriverPath=C:\Users\Dmitry\AppData\Local\Yandex\YandexBrowser\Application\browser.exe*/
+//        options.setBinary(System.getProperty("yandexDriverPath"));
+//ChromeDriver driver = new ChromeDriver(options);
+//        driver.get("https://github.com/yandex/YandexDriver/releases");
