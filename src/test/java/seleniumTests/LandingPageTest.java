@@ -1,7 +1,7 @@
-package Tests;
+package seleniumTests;
 
-import PageObject.LandingPage;
-import PageObject.LogInPage;
+import pageObject.LandingPage;
+import pageObject.LogInPage;
 import org.junit.After;
 import org.junit.Assert;
 import org.junit.Before;

@@ -1,6 +1,6 @@
-package Tests;
+package seleniumTests;
 
-import PageObject.SingUpPage;
+import pageObject.SingUpPage;
 import org.junit.Assert;
 import org.junit.Test;
 import org.junit.jupiter.api.DisplayName;

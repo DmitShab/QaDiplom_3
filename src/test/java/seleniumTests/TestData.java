@@ -1,4 +1,4 @@
-package Tests;
+package seleniumTests;
 
 import com.github.javafaker.Faker;
 
