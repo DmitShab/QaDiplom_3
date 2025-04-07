@@ -19,17 +19,17 @@ public class LandingPage {
     private final By ingredientsButton = By.xpath(".//div[@class='tab_tab__1SPyG  pt-4 pr-10 pb-4 pl-10 noselect']/span[text()='Начинки']");
 
     //Локатор выбранного раздела начинки
-//    private final By ingredientsLocator = By.xpath(".//div[@class='tab_tab__1SPyG tab_tab_type_current__2BEPc pt-4 pr-10 pb-4 pl-10 noselect']/span[@class = 'text text_type_main-default' and text() = 'Ничинки']");
-//    //Локатор выбранного раздела булки
-//    private final By bunsLocator = By.xpath(".//div[@class='tab_tab__1SPyG tab_tab_type_current__2BEPc pt-4 pr-10 pb-4 pl-10 noselect']/span[@class = 'text text_type_main-default' and text() = 'Булки']");
-//    //Локатор выбранного раздела соусы
-//    private final By soucesLocator = By.xpath(".//div[@class='tab_tab__1SPyG tab_tab_type_current__2BEPc pt-4 pr-10 pb-4 pl-10 noselect']/span[@class = 'text text_type_main-default' and text() = 'Соусы']");
-
-    private final By ingredientsLocator = By.xpath(".//h2[@class='text text_type_main-medium mb-6 mt-10' and text() = 'Начинки']");
+    private final By ingredientsLocator1 = By.xpath(".//div[@class='tab_tab__1SPyG tab_tab_type_current__2BEPc pt-4 pr-10 pb-4 pl-10 noselect']/span[@class = 'text text_type_main-default' and text() = 'Начинки']");
     //Локатор выбранного раздела булки
-    private final By bunsLocator = By.xpath(".//h2[@class='text text_type_main-medium mb-6 mt-10' and text() = 'Булки']");
+    private final By bunsLocator1 = By.xpath(".//div[@class='tab_tab__1SPyG tab_tab_type_current__2BEPc pt-4 pr-10 pb-4 pl-10 noselect']/span[@class = 'text text_type_main-default' and text() = 'Булки']");
     //Локатор выбранного раздела соусы
-    private final By soucesLocator = By.xpath(".//h2[@class='text text_type_main-medium mb-6 mt-10' and text() = 'Соусы']");
+    private final By soucesLocator1 = By.xpath(".//div[@class='tab_tab__1SPyG tab_tab_type_current__2BEPc pt-4 pr-10 pb-4 pl-10 noselect']/span[@class = 'text text_type_main-default' and text() = 'Соусы']");
+
+//    private final By ingredientsLocator = By.xpath(".//h2[@class='text text_type_main-medium mb-6 mt-10' and text() = 'Начинки']");
+//    //Локатор выбранного раздела булки
+//    private final By bunsLocator = By.xpath(".//h2[@class='text text_type_main-medium mb-6 mt-10' and text() = 'Булки']");
+//    //Локатор выбранного раздела соусы
+//    private final By soucesLocator = By.xpath(".//h2[@class='text text_type_main-medium mb-6 mt-10' and text() = 'Соусы']");
 
 
     public LandingPage(WebDriver driver) {
@@ -65,19 +65,28 @@ public class LandingPage {
         WebElement element = driver.findElement(ingredientsButton);
         element.click();
     }
+
+
+    //Проверка смены класса локаторы будучи выбранным
     @Step
-    public boolean findSouceElement(){
-        WebElement element = driver.findElement(soucesLocator);
+    public boolean findSouceElement() {
+        WebElement element = driver.findElement(soucesLocator1);
         return element.isDisplayed();
     }
+
+    //Проверка смены класса локаторы будучи выбранным
     @Step
-    public boolean findBunsElement(){
-        WebElement element = driver.findElement(bunsLocator);
+    public boolean findBunsElement() {
+        WebElement element = driver.findElement(bunsLocator1);
         return element.isDisplayed();
     }
+
+    //Проверка смены класса локаторы будучи выбранным
     @Step
-    public boolean findIngredientElement(){
-        WebElement element = driver.findElement(bunsLocator);
+    public boolean findIngredientElement() {
+        WebElement element = driver.findElement(ingredientsLocator1);
         return element.isDisplayed();
     }
+
 }
+

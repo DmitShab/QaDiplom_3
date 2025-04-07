@@ -34,6 +34,7 @@ public class LandingPageTest extends BaseUITest {
         //Переход в Личный кабинет
         logInPage.clickAccountButton();
     }
+
     //Удаление тестовой сущности
     @After
     public void clear() {
@@ -45,7 +46,7 @@ public class LandingPageTest extends BaseUITest {
     public void goToLandingPageTest() {
         constructorPage = new LandingPage(driver);
         constructorPage.clickConstructorButton();
-        Assert.assertEquals(true, logInPage.makeOrderButton());
+        Assert.assertTrue(logInPage.makeOrderButton());
     }
 
     @Test
@@ -53,7 +54,7 @@ public class LandingPageTest extends BaseUITest {
     public void goToLandingPage1Test() {
         constructorPage = new LandingPage(driver);
         constructorPage.clickStellarBurgers();
-        Assert.assertEquals(true, logInPage.makeOrderButton());
+        Assert.assertTrue(logInPage.makeOrderButton());
     }
 
     @Test
@@ -70,8 +71,8 @@ public class LandingPageTest extends BaseUITest {
     public void goToBunsTest() {
         constructorPage = new LandingPage(driver);
         constructorPage.clickConstructorButton();
-        constructorPage.clickSouces();
         constructorPage.clickIngredients();
+        constructorPage.clickBuns();
         Assert.assertTrue(constructorPage.findBunsElement());
     }
 

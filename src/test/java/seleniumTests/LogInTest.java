@@ -23,11 +23,13 @@ public class LogInTest extends BaseUITest {
         postRequestSignUPPOJO = new PostRequestSignUPPOJO(TestData.generateRandomName(), TestData.generateRandomEmail(), TestData.generateRandomPassword(10));
         apiUser.signUp(postRequestSignUPPOJO);
     }
+
     //Удаление тестовой сущности
     @After
-    public void clear(){
+    public void clear() {
         apiUser.deleteUser();
     }
+
     @Test
     @DisplayName("Успешный вход через кнопку лендинга 'Войти в аккаунт'")
     public void logInViaLandingLogInButtonTest() {
@@ -37,7 +39,7 @@ public class LogInTest extends BaseUITest {
         logInPage = new LogInPage(driver);
         logInPage.clickLandingLogInButton();
         logInPage.logIn(postRequestSignUPPOJO.getEmail(), postRequestSignUPPOJO.getPassword());
-        Assert.assertEquals(true, logInPage.makeOrderButton());
+        Assert.assertTrue(logInPage.makeOrderButton());
     }
 
     @Test
@@ -49,7 +51,7 @@ public class LogInTest extends BaseUITest {
         LogInPage logInPage = new LogInPage(driver);
         logInPage.clickAccountButton();
         logInPage.logIn(postRequestSignUPPOJO.getEmail(), postRequestSignUPPOJO.getPassword());
-        Assert.assertEquals(true, logInPage.makeOrderButton());
+        Assert.assertTrue(logInPage.makeOrderButton());
     }
 
     @Test
@@ -62,7 +64,7 @@ public class LogInTest extends BaseUITest {
         logInPage = new LogInPage(driver);
         logInPage.clickRegistrationLogInButton();
         logInPage.logIn(postRequestSignUPPOJO.getEmail(), postRequestSignUPPOJO.getPassword());
-        Assert.assertEquals(true, logInPage.makeOrderButton());
+        Assert.assertTrue(logInPage.makeOrderButton());
     }
 
     @Test
@@ -74,6 +76,6 @@ public class LogInTest extends BaseUITest {
         logInPage.clickForgetPasswordButton();
         logInPage.clickRegistrationLogInButton();
         logInPage.logIn(postRequestSignUPPOJO.getEmail(), postRequestSignUPPOJO.getPassword());
-        Assert.assertEquals(true, logInPage.makeOrderButton());
+        Assert.assertTrue(logInPage.makeOrderButton());
     }
 }
